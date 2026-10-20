@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import React from "react";
 import Games from "./Games";
+import { KEY } from "../../rawg";
 
 function Search({ handleitem, item, cart, handlecartitem }) {
    const [page, setpage] = useState(1);
@@ -45,7 +46,7 @@ function Search({ handleitem, item, cart, handlecartitem }) {
       async function fetchdata() {
          try {
             const res = await fetch(
-               `https://api.rawg.io/api/games?key=2b7bca7734574a68b6f29e73daecf0a8&search=${search}&page=${page}`
+               `https://api.rawg.io/api/games?key=${KEY}&search=${search}&page=${page}`
             );
             const data = await res.json();
             if (page === 1) {

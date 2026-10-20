@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { KEY } from "../../rawg";
 
 function GameDetails({handlecartitem, cart}) {
   const { id } = useParams();
@@ -24,21 +25,21 @@ function GameDetails({handlecartitem, cart}) {
       try {
         // Game Details
         const detailsres = await fetch(
-          `https://api.rawg.io/api/games/${id}?key=2b7bca7734574a68b6f29e73daecf0a8`
+          `https://api.rawg.io/api/games/${id}?key=${KEY}`
         );
         const detaildata = await detailsres.json();
         setgames(detaildata);
 
         // Photo Details
         const shotres = await fetch(
-          `https://api.rawg.io/api/games/${id}/screenshots?key=2b7bca7734574a68b6f29e73daecf0a8`
+          `https://api.rawg.io/api/games/${id}/screenshots?key=${KEY}`
         );
         const shotdata = await shotres.json();
         setshots(shotdata.results || []);
 
         // Video Details
         const videores = await fetch(
-          `https://api.rawg.io/api/games/${id}/movies?key=2b7bca7734574a68b6f29e73daecf0a8`
+          `https://api.rawg.io/api/games/${id}/movies?key=${KEY}`
         );
         const videodata = await videores.json();
         setvideo(videodata.results[0] || null);

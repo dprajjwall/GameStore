@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Games from "./Games";
 import Pagelist from "./Pagelist";
 import Background from "./background.jpg";
+import { KEY } from "../../rawg";
 
 function Game({search,handleitem,item,handlecartitem,cart}) {
     const [games, setgame] = useState([]);
@@ -21,7 +22,7 @@ function Game({search,handleitem,item,handlecartitem,cart}) {
     }
 
     useEffect(() => {
-        axios.get(`https://api.rawg.io/api/games?key=2b7bca7734574a68b6f29e73daecf0a8&page=${page}`
+        axios.get(`https://api.rawg.io/api/games?key=${KEY}&page=${page}`
         ).then(response => {
             setgame(response.data.results)
             console.log(response.data.results)
